@@ -175,6 +175,78 @@ def _canonical(signals):
     )
 
 
+def infer_priority_guardrail(signals):
+    """Infer minimum priority from strong natural-language impact signals."""
+
+    text = signals["raw_text"].lower()
+
+    widespread_phrases = (
+        "company-wide",
+        "company wide",
+        "system-wide",
+        "system wide",
+        "all users",
+        "all customers",
+        "all employees",
+        "everyone is blocked",
+        "entire organization",
+        "complete outage",
+    )
+
+    blocked_work_phrases = (
+        "black screen",
+        "will not start",
+        "won't start",
+        "cannot work",
+        "can't work",
+        "unable to work",
+        "blocked from working",
+        "completely unusable",
+        "cannot access",
+        "can't access",
+        "unable to access",
+    )
+
+    low_impact_phrases = (
+        "minor issue",
+        "cosmetic issue",
+        "spelling mistake",
+        "general question",
+        "feature request",
+        "no users are blocked",
+        "no downtime",
+    )
+
+    production_outage = (
+        "production" in text
+        and any(
+            phrase in text
+            for phrase in (
+                "down",
+                "unavailable",
+                "outage",
+                "not working",
+                "failing",
+                "failed",
+            )
+        )
+    )
+
+    if signals["security_incident_flag"] or signals["data_loss_flag"]:
+        return "High", "Security or data-loss incident"
+
+    if production_outage or any(phrase in text for phrase in widespread_phrases):
+        return "High", "Production or widespread service disruption"
+
+    if any(phrase in text for phrase in blocked_work_phrases):
+        return "Medium", "User is blocked from performing required work"
+
+    if any(phrase in text for phrase in low_impact_phrases):
+        return "Low", "Minor issue without operational disruption"
+
+    return None, None
+
+
 def predict_priority(ticket_text):
     signals = extract_signals(ticket_text)
     row = {
@@ -205,8 +277,44 @@ def predict_priority(ticket_text):
     text_probability = package["text_model"].predict_proba(text_features)[0]
     weight = float(package["text_weight"])
     probabilities = (1.0 - weight) * structured + weight * text_probability
-    best = int(probabilities.argmax())
+
     classes = package["classes"]
+    class_names = [str(label).title() for label in classes]
+    best = int(probabilities.argmax())
+
+    guardrail_priority, guardrail_reason = infer_priority_guardrail(signals)
+
+    if guardrail_priority in class_names:
+        target_index = class_names.index(guardrail_priority)
+        confidence_floor = {
+            "High": 0.85,
+            "Medium": 0.75,
+            "Low": 0.70,
+        }[guardrail_priority]
+
+        adjusted = probabilities.copy()
+        target_confidence = max(
+            float(adjusted[target_index]),
+            confidence_floor,
+        )
+        other_total = float(adjusted.sum() - adjusted[target_index])
+        remaining = 1.0 - target_confidence
+
+        if other_total > 0:
+            for index in range(len(adjusted)):
+                if index != target_index:
+                    adjusted[index] = (
+                        adjusted[index] / other_total
+                    ) * remaining
+        else:
+            for index in range(len(adjusted)):
+                if index != target_index:
+                    adjusted[index] = remaining / (len(adjusted) - 1)
+
+        adjusted[target_index] = target_confidence
+        probabilities = adjusted
+        best = target_index
+
     confidence = float(probabilities[best])
     threshold = float(package["review_threshold"])
     public_signals = {
@@ -217,6 +325,10 @@ def predict_priority(ticket_text):
         "payment_impact": bool(signals["payment_impact_flag"]),
         "security_incident": bool(signals["security_incident_flag"]),
         "data_loss": bool(signals["data_loss_flag"]),
+        "priority_source": (
+            "language_guardrail" if guardrail_priority else "trained_model"
+        ),
+        "priority_reason": guardrail_reason,
     }
     return {
         "priority": str(classes[best]).title(),
