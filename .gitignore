@@ -18,3 +18,6 @@ models/*
 # Generated intermediate datasets
 data/processed/
 data/splits/
+# Local safety backups
+priority_description_predictor_backup.py
+priority_description_predictor_before_guardrails.py
