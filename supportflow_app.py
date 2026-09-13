@@ -3,6 +3,7 @@
 from pathlib import Path
 
 from flask import Flask, jsonify, request, send_from_directory
+from flask_cors import CORS
 
 from category_text_predictor import predict_category
 from priority_description_predictor import predict_priority
@@ -16,6 +17,8 @@ app = Flask(
     static_folder=str(FRONTEND_DIST / "assets"),
     static_url_path="/assets",
 )
+
+CORS(app)
 
 RESPONSE_TARGETS = {
     "High": "Respond within 30 minutes",
