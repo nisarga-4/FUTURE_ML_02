@@ -1,0 +1,7 @@
+{
+  "test_tickets": 9567,
+  "accuracy": 0.8724783108602487,
+  "macro_f1": 0.872990705117703,
+  "weighted_f1": 0.8724351263796786,
+  "feature_type": "tfidf_lsa"
+}

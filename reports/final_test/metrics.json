@@ -1,0 +1,8 @@
+{
+  "test_tickets": 9567,
+  "accuracy": 0.8701787394167451,
+  "macro_f1": 0.8713156056855343,
+  "weighted_f1": 0.8702186010339763,
+  "majority_baseline_accuracy": 0.2845197031462318,
+  "model_file": "D:\\support_ticket_project\\models\\best_it_tuned.joblib"
+}

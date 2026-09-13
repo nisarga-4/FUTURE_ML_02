@@ -1,0 +1,3 @@
+dataset,total_tickets,automatically_routed,sent_for_review,automation_coverage,automatic_routing_accuracy,overall_model_accuracy
+validation,4784,4150,634,0.8674749163879598,0.92,0.8699832775919732
+test,9567,8311,1256,0.8687153757708791,0.922512333052581,0.8724783108602487

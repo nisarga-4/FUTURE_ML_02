@@ -1,0 +1,65 @@
+cluster,dominant_category,dominant_count,cluster_size,purity
+49,internal_it::HR Support,109,415,0.26265060240963856
+63,internal_it::Miscellaneous,125,457,0.2735229759299781
+5,internal_it::Hardware,208,685,0.30364963503649633
+26,internal_it::Hardware,183,600,0.305
+2,internal_it::Hardware,181,590,0.30677966101694915
+46,internal_it::Hardware,67,217,0.3087557603686636
+34,internal_it::HR Support,198,602,0.3289036544850498
+30,internal_it::HR Support,394,1189,0.3313708999158957
+57,internal_it::Miscellaneous,71,211,0.33649289099526064
+25,internal_it::Hardware,204,584,0.3493150684931507
+15,internal_it::Hardware,140,390,0.358974358974359
+4,internal_it::Hardware,252,677,0.3722304283604136
+13,internal_it::Hardware,911,2370,0.38438818565400845
+48,internal_it::Miscellaneous,132,339,0.3893805309734513
+31,internal_it::HR Support,280,660,0.42424242424242425
+58,internal_it::HR Support,229,525,0.4361904761904762
+60,internal_it::HR Support,225,514,0.4377431906614786
+45,internal_it::Hardware,131,291,0.45017182130584193
+24,internal_it::Miscellaneous,281,616,0.45616883116883117
+18,internal_it::Access,200,411,0.48661800486618007
+62,internal_it::Access,287,576,0.4982638888888889
+35,internal_it::Access,94,187,0.5026737967914439
+7,internal_it::Hardware,769,1503,0.5116433799068529
+40,internal_it::Hardware,578,1107,0.5221318879855466
+51,internal_it::Hardware,69,127,0.5433070866141733
+14,internal_it::Hardware,556,1022,0.5440313111545988
+37,internal_it::Hardware,84,143,0.5874125874125874
+17,internal_it::HR Support,569,909,0.6259625962596259
+10,internal_it::Hardware,856,1282,0.6677067082683308
+32,internal_it::Hardware,545,787,0.6925031766200762
+1,internal_it::Hardware,262,377,0.6949602122015915
+61,internal_it::Hardware,300,427,0.702576112412178
+53,internal_it::Hardware,363,489,0.7423312883435583
+27,internal_it::Miscellaneous,665,894,0.743847874720358
+3,internal_it::HR Support,391,498,0.785140562248996
+42,internal_it::HR Support,183,227,0.8061674008810573
+54,internal_it::Access,130,153,0.8496732026143791
+59,internal_it::Purchase,59,68,0.8676470588235294
+21,internal_it::Access,270,311,0.8681672025723473
+43,internal_it::HR Support,696,785,0.8866242038216561
+36,internal_it::Miscellaneous,635,711,0.8931082981715893
+9,internal_it::Purchase,378,420,0.9
+6,internal_it::Administrative rights,356,387,0.9198966408268734
+55,internal_it::Internal Project,526,563,0.9342806394316163
+52,internal_it::Access,344,364,0.945054945054945
+29,internal_it::Hardware,499,528,0.9450757575757576
+39,internal_it::HR Support,229,242,0.9462809917355371
+41,internal_it::Access,455,479,0.9498956158663883
+50,internal_it::Storage,321,334,0.9610778443113772
+20,internal_it::Storage,345,358,0.9636871508379888
+8,internal_it::Storage,486,504,0.9642857142857143
+11,internal_it::Access,178,184,0.967391304347826
+56,internal_it::Access,270,279,0.967741935483871
+44,internal_it::Access,154,158,0.9746835443037974
+12,internal_it::HR Support,446,456,0.9780701754385965
+16,internal_it::HR Support,218,222,0.9819819819819819
+23,internal_it::Hardware,455,458,0.9934497816593887
+47,internal_it::HR Support,163,164,0.9939024390243902
+28,internal_it::Purchase,730,732,0.9972677595628415
+22,internal_it::HR Support,496,497,0.9979879275653923
+0,internal_it::Access,680,681,0.9985315712187959
+19,internal_it::Purchase,197,197,1.0
+33,internal_it::HR Support,155,155,1.0
+38,internal_it::HR Support,198,198,1.0

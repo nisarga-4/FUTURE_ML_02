@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <meta
+        name="description"
+        content="AI-assisted support ticket classification and prioritisation."
+    >
+
+    <title>SupportFlow AI</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+    <header class="navbar">
+        <a href="/" class="brand">
+            <span class="brand-icon">S</span>
+
+            <span>
+                SupportFlow
+                <small>AI OPERATIONS</small>
+            </span>
+        </a>
+
+        <span class="system-status">
+            <span class="status-dot"></span>
+            Both models online
+        </span>
+    </header>
+
+    <main class="page">
+        <section class="page-heading">
+            <div>
+                <p class="eyebrow">
+                    INTELLIGENT SUPPORT OPERATIONS
+                </p>
+
+                <h1>Analyse and route a support ticket</h1>
+
+                <p>
+                    One decision system for category routing,
+                    operational priority and human-review control.
+                </p>
+            </div>
+
+            <div class="metrics">
+                <article>
+                    <strong>93.23%</strong>
+                    <span>Selective category routing</span>
+                </article>
+
+                <article>
+                    <strong>97.45%</strong>
+                    <span>Overall priority accuracy</span>
+                </article>
+
+                <article>
+                    <strong>98.97%</strong>
+                    <span>Selective priority accuracy</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="workspace">
+            <form id="ticket-form" class="panel ticket-panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="section-label">NEW REQUEST</p>
+                        <h2>Ticket information</h2>
+                    </div>
+
+                    <span class="model-tag">
+                        2-model decision system
+                    </span>
+                </div>
+
+                <label for="ticket-text">
+                    Ticket description
+                </label>
+
+                <textarea
+                    id="ticket-text"
+                    rows="5"
+                    minlength="5"
+                    required
+                    placeholder="Describe the affected service, failure and business impact..."
+                ></textarea>
+
+                <p class="form-section-title">
+                    Operational impact
+                </p>
+
+                <div class="form-grid">
+                    <div>
+                        <label for="customers-affected">
+                            Customers affected
+                        </label>
+
+                        <input
+                            id="customers-affected"
+                            type="number"
+                            min="0"
+                            value="1"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="downtime-min">
+                            Downtime in minutes
+                        </label>
+
+                        <input
+                            id="downtime-min"
+                            type="number"
+                            min="0"
+                            step="0.1"
+                            value="0"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="error-rate-pct">
+                            Error rate (%)
+                        </label>
+
+                        <input
+                            id="error-rate-pct"
+                            type="number"
+                            min="0"
+                            max="100"
+                            step="0.1"
+                            value="0"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="product-area">
+                            Product area
+                        </label>
+
+                        <select id="product-area">
+                            <option value="auth">
+                                Authentication
+                            </option>
+                            <option value="billing">
+                                Billing
+                            </option>
+                            <option value="mobile">
+                                Mobile
+                            </option>
+                            <option value="data_pipeline">
+                                Data pipeline
+                            </option>
+                            <option value="analytics">
+                                Analytics
+                            </option>
+                            <option value="notifications">
+                                Notifications
+                            </option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="customer-tier">
+                            Customer tier
+                        </label>
+
+                        <select id="customer-tier">
+                            <option value="basic">Basic</option>
+                            <option value="plus">Plus</option>
+                            <option value="enterprise">
+                                Enterprise
+                            </option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="customer-sentiment">
+                            Customer sentiment
+                        </label>
+
+                        <select id="customer-sentiment">
+                            <option value="neutral">Neutral</option>
+                            <option value="negative">Negative</option>
+                            <option value="positive">Positive</option>
+                            <option value="unknown">Unknown</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flag-grid">
+                    <label class="check">
+                        <input
+                            id="payment-impact"
+                            type="checkbox"
+                        >
+                        <span>Payment impact</span>
+                    </label>
+
+                    <label class="check">
+                        <input
+                            id="security-incident"
+                            type="checkbox"
+                        >
+                        <span>Security incident</span>
+                    </label>
+
+                    <label class="check">
+                        <input
+                            id="data-loss"
+                            type="checkbox"
+                        >
+                        <span>Data loss</span>
+                    </label>
+
+                    <label class="check">
+                        <input
+                            id="has-runbook"
+                            type="checkbox"
+                        >
+                        <span>Runbook available</span>
+                    </label>
+                </div>
+
+                <details class="advanced-fields">
+                    <summary>
+                        Company context
+                        <span>
+                            Used to improve priority accuracy
+                        </span>
+                    </summary>
+
+                    <div class="form-grid advanced-grid">
+                        <div>
+                            <label for="company-size">
+                                Company size
+                            </label>
+
+                            <select id="company-size">
+                                <option value="small">Small</option>
+                                <option value="medium" selected>
+                                    Medium
+                                </option>
+                                <option value="large">Large</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="industry">
+                                Industry
+                            </label>
+
+                            <select id="industry">
+                                <option value="saas_b2b">
+                                    SaaS B2B
+                                </option>
+                                <option value="fintech">
+                                    Fintech
+                                </option>
+                                <option value="ecommerce">
+                                    Ecommerce
+                                </option>
+                                <option value="healthcare">
+                                    Healthcare
+                                </option>
+                                <option value="gaming">
+                                    Gaming
+                                </option>
+                                <option value="logistics">
+                                    Logistics
+                                </option>
+                                <option value="media">
+                                    Media
+                                </option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="org-users">
+                                Organisation users
+                            </label>
+
+                            <input
+                                id="org-users"
+                                type="number"
+                                min="1"
+                                value="250"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label for="region">
+                                Region
+                            </label>
+
+                            <select id="region">
+                                <option value="apac">APAC</option>
+                                <option value="amer">Americas</option>
+                                <option value="emea">EMEA</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="past-30d-tickets">
+                                Tickets in past 30 days
+                            </label>
+
+                            <input
+                                id="past-30d-tickets"
+                                type="number"
+                                min="0"
+                                value="2"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label for="past-90d-incidents">
+                                Incidents in past 90 days
+                            </label>
+
+                            <input
+                                id="past-90d-incidents"
+                                type="number"
+                                min="0"
+                                value="1"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label for="booking-channel">
+                                Ticket channel
+                            </label>
+
+                            <select id="booking-channel">
+                                <option value="web">Web</option>
+                                <option value="chat">Chat</option>
+                                <option value="email">Email</option>
+                                <option value="phone">Phone</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="reported-by-role">
+                                Reporter role
+                            </label>
+
+                            <select id="reported-by-role">
+                                <option value="support">
+                                    Support
+                                </option>
+                                <option value="devops">
+                                    DevOps
+                                </option>
+                                <option value="product_manager">
+                                    Product manager
+                                </option>
+                                <option value="finance">
+                                    Finance
+                                </option>
+                                <option value="c_level">
+                                    C-level
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </details>
+
+                <button
+                    id="analyse-button"
+                    type="submit"
+                >
+                    <span>Analyse and route ticket</span>
+                    <span>→</span>
+                </button>
+
+                <p
+                    id="error-message"
+                    class="error-message"
+                    role="alert"
+                ></p>
+            </form>
+
+            <section
+                class="panel result-panel-wrap"
+                aria-live="polite"
+            >
+                <div
+                    id="empty-state"
+                    class="empty-state"
+                >
+                    <div class="empty-icon">✦</div>
+
+                    <h2>Decision panel</h2>
+
+                    <p>
+                        Submit a request to see its category,
+                        assigned team, priority and review status.
+                    </p>
+                </div>
+
+                <div
+                    id="result-panel"
+                    class="hidden"
+                >
+                    <div class="panel-heading">
+                        <div>
+                            <p class="section-label">
+                                ML DECISION
+                            </p>
+                            <h2>Routing recommendation</h2>
+                        </div>
+
+                        <span
+                            id="review-badge"
+                            class="badge"
+                        ></span>
+                    </div>
+
+                    <div class="primary-result">
+                        <span>Predicted category</span>
+                        <strong id="result-category"></strong>
+                        <small id="result-team"></small>
+                    </div>
+
+                    <div class="result-grid">
+                        <article>
+                            <span>Priority</span>
+                            <strong id="result-priority"></strong>
+                        </article>
+
+                        <article>
+                            <span>Response target</span>
+                            <strong id="result-response"></strong>
+                        </article>
+
+                        <article>
+                            <span>Category margin</span>
+                            <strong id="result-margin"></strong>
+                        </article>
+
+                        <article>
+                            <span>Priority confidence</span>
+                            <strong id="result-confidence"></strong>
+                        </article>
+                    </div>
+
+                    <div class="probability-box">
+                        <h3>Priority probabilities</h3>
+                        <div id="probability-list"></div>
+                    </div>
+
+                    <div class="review-stack">
+                        <div
+                            id="category-review-message"
+                            class="review-message"
+                        ></div>
+
+                        <div
+                            id="priority-review-message"
+                            class="review-message"
+                        ></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section class="method-strip">
+            <article>
+                <span>01</span>
+                <div>
+                    <strong>Read</strong>
+                    <p>Normalises the ticket description.</p>
+                </div>
+            </article>
+
+            <article>
+                <span>02</span>
+                <div>
+                    <strong>Classify</strong>
+                    <p>Routes across eight categories.</p>
+                </div>
+            </article>
+
+            <article>
+                <span>03</span>
+                <div>
+                    <strong>Prioritise</strong>
+                    <p>Measures operational impact.</p>
+                </div>
+            </article>
+
+            <article>
+                <span>04</span>
+                <div>
+                    <strong>Review</strong>
+                    <p>Escalates uncertain decisions.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script
+        src="{{ url_for('static', filename='app.js') }}"
+        defer
+    ></script>
+</body>
+</html>

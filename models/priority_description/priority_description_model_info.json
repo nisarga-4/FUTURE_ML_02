@@ -1,0 +1,9 @@
+{
+  "test_accuracy": 0.9529333333333333,
+  "test_macro_f1": 0.9470782669873374,
+  "automatic_accuracy": 0.9818155154714767,
+  "automation_coverage": 0.9092,
+  "review_threshold": 0.6191506208410961,
+  "text_weight": 0.2,
+  "training_seconds": 12.431050062179565
+}

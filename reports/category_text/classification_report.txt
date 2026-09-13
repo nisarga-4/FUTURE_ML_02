@@ -1,0 +1,12 @@
+              precision    recall  f1-score   support
+
+         api     1.0000    0.9966    0.9983       295
+     billing     0.9913    0.9956    0.9935       458
+cancellation     1.0000    1.0000    1.0000       353
+   complaint     1.0000    0.9973    0.9987       375
+   technical     0.9972    0.9981    0.9977      1069
+     upgrade     0.9978    0.9956    0.9967       453
+
+    accuracy                         0.9973      3003
+   macro avg     0.9977    0.9972    0.9975      3003
+weighted avg     0.9973    0.9973    0.9973      3003

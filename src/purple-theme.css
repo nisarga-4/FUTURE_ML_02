@@ -1,0 +1,754 @@
+/* =========================================================
+   SUPPORTFLOW AI — PREMIUM PURPLE LIQUID GLASS THEME
+   Put this AFTER your normal CSS.
+   ========================================================= */
+
+:root {
+  /* Main background */
+  --sf-bg-1: #f4f1ff;
+  --sf-bg-2: #e9e3ff;
+  --sf-bg-3: #d9d0ff;
+  --sf-bg-4: #c7b9ff;
+
+  /* Purple system */
+  --sf-purple: #6c4dff;
+  --sf-purple-2: #7c5cff;
+  --sf-purple-3: #9b86ff;
+  --sf-purple-soft: #c9beff;
+  --sf-purple-pale: #e8e2ff;
+  --sf-deep: #402abf;
+
+  /* Text */
+  --sf-text: #18133f;
+  --sf-muted: #70698f;
+
+  /* Tiny secondary accents */
+  --sf-cyan: #82dff2;
+  --sf-success: #29c788;
+  --sf-danger: #ff4f78;
+
+  /* Glass */
+  --sf-glass: rgba(255, 255, 255, 0.29);
+  --sf-glass-strong: rgba(255, 255, 255, 0.42);
+  --sf-glass-border: rgba(255, 255, 255, 0.68);
+
+  --sf-shadow:
+    0 25px 70px rgba(75, 48, 170, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.84);
+
+  --sf-shadow-hover:
+    0 32px 90px rgba(75, 48, 170, 0.19),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+/* =========================================================
+   PAGE BACKGROUND
+   ========================================================= */
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--sf-text);
+
+  background:
+    radial-gradient(
+      circle at 12% 12%,
+      rgba(145, 119, 255, 0.30) 0%,
+      rgba(145, 119, 255, 0.13) 18%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 85% 17%,
+      rgba(116, 82, 255, 0.25) 0%,
+      rgba(116, 82, 255, 0.10) 22%,
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 73% 82%,
+      rgba(171, 153, 255, 0.24) 0%,
+      rgba(171, 153, 255, 0.08) 22%,
+      transparent 47%
+    ),
+    linear-gradient(
+      145deg,
+      #f7f5ff 0%,
+      #efebff 24%,
+      #e4ddff 52%,
+      #d7ccff 76%,
+      #eeeaff 100%
+    ) !important;
+
+  background-attachment: fixed;
+}
+
+/* =========================================================
+   MAIN APP BACKDROP
+   ========================================================= */
+
+.app-shell,
+.app,
+.dashboard,
+.dashboard-page,
+.main-layout,
+.page-wrapper {
+  background: transparent !important;
+}
+
+/* Large purple light regions */
+
+.background-fx::before {
+  content: "";
+  position: fixed;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  top: -190px;
+  right: -130px;
+
+  background:
+    radial-gradient(
+      circle at 35% 35%,
+      rgba(255,255,255,0.62),
+      rgba(138,105,255,0.30) 34%,
+      rgba(103,73,255,0.18) 57%,
+      transparent 72%
+    );
+
+  filter: blur(48px);
+  pointer-events: none;
+  z-index: -2;
+}
+
+.background-fx::after {
+  content: "";
+  position: fixed;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  bottom: -220px;
+  left: 19%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(174,155,255,0.32),
+      rgba(123,91,255,0.17) 48%,
+      transparent 70%
+    );
+
+  filter: blur(58px);
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* =========================================================
+   GLASS CARDS
+   ========================================================= */
+
+.glass-card,
+.card,
+.metric-card,
+.ticket-form-card,
+.decision-panel,
+.table-card,
+.chart-card,
+.settings-card,
+.help-card,
+.faq-card,
+.overview-card,
+.attention-card,
+.activity-strip {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.48) 0%,
+      rgba(243,239,255,0.30) 46%,
+      rgba(211,199,255,0.26) 100%
+    ) !important;
+
+  border:
+    1px solid rgba(255,255,255,0.72) !important;
+
+  box-shadow:
+    0 24px 65px rgba(71,49,161,0.14),
+    inset 0 1px 0 rgba(255,255,255,0.90),
+    inset 0 -1px 0 rgba(120,95,219,0.08) !important;
+
+  backdrop-filter:
+    blur(28px)
+    saturate(145%) !important;
+
+  -webkit-backdrop-filter:
+    blur(28px)
+    saturate(145%) !important;
+}
+
+/* Strong glass cards */
+
+.glass-strong,
+.ticket-form-card,
+.decision-panel {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.55),
+      rgba(238,232,255,0.35) 48%,
+      rgba(200,185,255,0.28)
+    ) !important;
+}
+
+/* Remove rose/pink glow */
+
+.glass-card::before,
+.glass-card::after,
+.metric-card::before,
+.metric-card::after {
+  filter: hue-rotate(18deg);
+}
+
+/* =========================================================
+   TOP NAVIGATION
+   ========================================================= */
+
+.topbar,
+.header,
+.navbar,
+.top-nav {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(243,239,255,0.80),
+      rgba(235,229,255,0.48),
+      rgba(235,229,255,0.12)
+    ) !important;
+
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+}
+
+/* Search field */
+
+.global-search,
+.search-box,
+.search-container {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.50),
+      rgba(230,221,255,0.31)
+    ) !important;
+
+  border:
+    1px solid rgba(255,255,255,0.72) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.90),
+    0 10px 35px rgba(74,52,162,0.08) !important;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+  background:
+    linear-gradient(
+      165deg,
+      rgba(255,255,255,0.50) 0%,
+      rgba(231,223,255,0.34) 45%,
+      rgba(204,192,255,0.27) 100%
+    ) !important;
+
+  border:
+    1px solid rgba(255,255,255,0.70) !important;
+
+  box-shadow:
+    0 26px 75px rgba(66,43,156,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.90) !important;
+
+  backdrop-filter: blur(30px) saturate(145%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(145%) !important;
+}
+
+/* sidebar active */
+
+.nav-item.active,
+.sidebar-item.active,
+.menu-item.active {
+  color: #4d31cc !important;
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(255,255,255,0.68),
+      rgba(203,190,255,0.52)
+    ) !important;
+
+  border:
+    1px solid rgba(255,255,255,0.82) !important;
+
+  box-shadow:
+    0 10px 25px rgba(99,72,215,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.90) !important;
+}
+
+.nav-item.active::before {
+  background: #6c4dff !important;
+
+  box-shadow:
+    0 0 15px rgba(108,77,255,0.58) !important;
+}
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.brand-logo,
+.logo-icon {
+  color: white !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #977fff 0%,
+      #7454ff 47%,
+      #5032d3 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,0.48),
+    0 12px 30px rgba(89,60,210,0.30) !important;
+}
+
+/* =========================================================
+   METRIC CARDS
+   ========================================================= */
+
+.metric-card {
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at 12% 5%,
+      rgba(255,255,255,0.67),
+      transparent 42%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.47),
+      rgba(225,216,255,0.30) 55%,
+      rgba(194,179,255,0.23)
+    ) !important;
+}
+
+.metric-icon {
+  color: #6644ef !important;
+
+  background:
+    radial-gradient(
+      circle at 28% 22%,
+      rgba(255,255,255,0.94),
+      rgba(223,213,255,0.43) 45%,
+      rgba(173,151,255,0.31) 100%
+    ) !important;
+
+  border:
+    1px solid rgba(255,255,255,0.82) !important;
+
+  box-shadow:
+    inset -8px -10px 22px rgba(96,67,210,0.08),
+    inset 0 2px 2px rgba(255,255,255,0.95),
+    0 12px 28px rgba(91,64,195,0.15) !important;
+}
+
+.metric-value {
+  color: #18113f !important;
+}
+
+/* =========================================================
+   PROGRESS BARS
+   ========================================================= */
+
+.progress-track {
+  background:
+    rgba(91,74,154,0.10) !important;
+}
+
+.progress-track span,
+.confidence-track i,
+.mini-confidence span {
+  background:
+    linear-gradient(
+      90deg,
+      #5537dc 0%,
+      #704fff 38%,
+      #9b83ff 72%,
+      #c1b3ff 100%
+    ) !important;
+
+  box-shadow:
+    0 0 10px rgba(112,79,255,0.22);
+}
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+input,
+textarea,
+select {
+  color: #191341;
+}
+
+.field textarea,
+.field select,
+.field input,
+.queue-search,
+.filter-select {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.44),
+      rgba(233,226,255,0.29)
+    ) !important;
+
+  border:
+    1px solid rgba(255,255,255,0.74) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.90) !important;
+}
+
+.field textarea:focus,
+.field select:focus,
+.field input:focus {
+  border-color:
+    rgba(108,77,255,0.52) !important;
+
+  background:
+    rgba(255,255,255,0.54) !important;
+
+  box-shadow:
+    0 0 0 4px rgba(108,77,255,0.09),
+    inset 0 1px 0 white !important;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.primary-btn,
+.classify-btn,
+button.primary {
+  color: white !important;
+
+  background:
+    linear-gradient(
+      105deg,
+      #4930c7 0%,
+      #6242eb 35%,
+      #7554ff 66%,
+      #8b70ff 100%
+    ) !important;
+
+  border:
+    1px solid rgba(255,255,255,0.30) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.34),
+    0 14px 34px rgba(85,58,205,0.29) !important;
+}
+
+.primary-btn:hover,
+.classify-btn:hover,
+button.primary:hover {
+  background:
+    linear-gradient(
+      105deg,
+      #4229bc,
+      #5c3ce5,
+      #704eff,
+      #876cff
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.40),
+    0 18px 42px rgba(85,58,205,0.36) !important;
+}
+
+/* Secondary buttons */
+
+.secondary-btn {
+  background:
+    rgba(255,255,255,0.34) !important;
+
+  border:
+    1px solid rgba(255,255,255,0.72) !important;
+}
+
+/* =========================================================
+   ML DECISION PANEL
+   ========================================================= */
+
+.decision-panel {
+  background:
+    radial-gradient(
+      circle at 72% 24%,
+      rgba(146,123,255,0.18),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 38% 80%,
+      rgba(126,177,255,0.10),
+      transparent 38%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.53),
+      rgba(231,223,255,0.32) 48%,
+      rgba(201,187,255,0.26)
+    ) !important;
+}
+
+.brain-badge,
+.empty-visual {
+  color: #6242e8 !important;
+
+  background:
+    radial-gradient(
+      circle at 28% 20%,
+      rgba(255,255,255,0.95),
+      rgba(222,212,255,0.44) 46%,
+      rgba(157,135,255,0.30)
+    ) !important;
+}
+
+/* Purple classification */
+
+.decision-tile.classification strong {
+  color: #5235d3 !important;
+}
+
+/* Cyan is only a small detail */
+
+.decision-tile.response strong {
+  color: #38899c !important;
+}
+
+/* =========================================================
+   SWITCHES
+   ========================================================= */
+
+.switch-row input:checked + .switch-ui {
+  background:
+    linear-gradient(
+      90deg,
+      #5537dd,
+      #7858ff,
+      #9c85ff
+    ) !important;
+}
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.category-pill {
+  background:
+    rgba(108,77,255,0.10) !important;
+
+  color:
+    #4e33c8 !important;
+}
+
+.auto-badge {
+  background:
+    rgba(41,199,136,0.10) !important;
+}
+
+/* Only priorities should remain red */
+
+.priority-tag.high,
+.priority-tag.critical {
+  color: #d93259 !important;
+
+  background:
+    rgba(255,79,120,0.11) !important;
+}
+
+/* =========================================================
+   PROMO CARD
+   ========================================================= */
+
+.promo-card {
+  background:
+    radial-gradient(
+      circle at 85% 90%,
+      rgba(139,110,255,0.23),
+      transparent 45%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.52),
+      rgba(219,208,255,0.32)
+    ) !important;
+}
+
+/* Only one decorative glass orb */
+
+.promo-orb {
+  background:
+    radial-gradient(
+      circle at 28% 22%,
+      rgba(255,255,255,0.96) 0%,
+      rgba(255,255,255,0.29) 26%,
+      rgba(156,130,255,0.42) 59%,
+      rgba(93,62,221,0.29) 100%
+    ) !important;
+
+  border:
+    1px solid rgba(255,255,255,0.82) !important;
+
+  box-shadow:
+    inset -12px -14px 28px rgba(73,43,196,0.14),
+    inset 3px 3px 8px rgba(255,255,255,0.68),
+    0 17px 42px rgba(73,47,178,0.20) !important;
+}
+
+/* =========================================================
+   LIQUID SHAPES
+   ========================================================= */
+
+.liquid-shape {
+  background:
+    radial-gradient(
+      circle at 25% 20%,
+      rgba(255,255,255,0.94),
+      rgba(255,255,255,0.22) 19%,
+      transparent 36%
+    ),
+    radial-gradient(
+      circle at 69% 75%,
+      rgba(125,91,255,0.25),
+      transparent 53%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.40),
+      rgba(166,145,255,0.24) 52%,
+      rgba(100,71,224,0.15)
+    ) !important;
+
+  border:
+    1px solid rgba(255,255,255,0.72) !important;
+
+  box-shadow:
+    inset 0 2px 2px rgba(255,255,255,0.92),
+    inset -25px -24px 50px rgba(87,57,207,0.12),
+    0 30px 80px rgba(71,45,167,0.16) !important;
+}
+
+/* =========================================================
+   REMOVE PINK / MAGENTA AMBIENT COLORS
+   ========================================================= */
+
+.ambient-a {
+  background:
+    #7958ff !important;
+
+  opacity:
+    0.35 !important;
+}
+
+.ambient-b {
+  background:
+    #b4a0ff !important;
+
+  opacity:
+    0.28 !important;
+}
+
+/* Override common pink values if used directly */
+
+[style*="#ffb6"],
+[style*="#FFB6"],
+[style*="#ffc0"],
+[style*="#FFC0"],
+[style*="#f5a"],
+[style*="#F5A"] {
+  filter: hue-rotate(45deg);
+}
+
+/* =========================================================
+   CHART COLORS
+   ========================================================= */
+
+.recharts-default-tooltip {
+  background:
+    rgba(248,246,255,0.90) !important;
+}
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+.metric-value {
+  color:
+    #18113f !important;
+}
+
+.eyebrow {
+  color:
+    #6544eb !important;
+}
+
+p,
+.section-heading span,
+.metric-label {
+  color:
+    #716a8e;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  body {
+    background:
+      radial-gradient(
+        circle at 78% 8%,
+        rgba(123,91,255,0.24),
+        transparent 34%
+      ),
+      linear-gradient(
+        155deg,
+        #f6f3ff,
+        #e9e3ff 55%,
+        #d8ceff
+      ) !important;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
