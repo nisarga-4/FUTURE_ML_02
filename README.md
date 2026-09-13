@@ -2,7 +2,7 @@
 
 **SupportFlow AI** is an end-to-end machine-learning application that reads a customer-support request and automatically recommends its category, support team, priority, response target, and review status.
 
-The project was developed for **Future Interns â€” Machine Learning Task 2** and is maintained in the repository **`FUTURE_ML_02`**.
+The project was developed for **Future Interns — Machine Learning Task 2** and is maintained in the repository **`FUTURE_ML_02`**.
 
 ## Live demo
 
@@ -64,9 +64,9 @@ Examples:
 
 | Customer statement | Expected priority |
 | --- | --- |
-| â€œThe production checkout system is down and all customers are blocked.â€ | High |
-| â€œMy laptop screen is black, the device will not start, and I cannot work.â€ | Medium |
-| â€œThere is a minor spelling mistake on the invoice.â€ | Low |
+| “The production checkout system is down and all customers are blocked.” | High |
+| “My laptop screen is black, the device will not start, and I cannot work.” | Medium |
+| “There is a minor spelling mistake on the invoice.” | Low |
 
 These guardrails do not replace the trained model. They provide a minimum severity for clear operational phrases and return the reason inside the API's extracted signals.
 
@@ -116,34 +116,34 @@ Flask inference API (Vercel)
 
 ```text
 FUTURE_ML_02/
-â”œâ”€â”€ data/
-â”‚   â””â”€â”€ raw/                              # Source datasets
-â”œâ”€â”€ frontend/
-â”‚   â”œâ”€â”€ public/
-â”‚   â”œâ”€â”€ src/
-â”‚   â”‚   â”œâ”€â”€ components/
-â”‚   â”‚   â”œâ”€â”€ data/
-â”‚   â”‚   â”œâ”€â”€ services/
-â”‚   â”‚   â”‚   â””â”€â”€ api.js
-â”‚   â”‚   â”œâ”€â”€ App.jsx
-â”‚   â”‚   â”œâ”€â”€ LandingPage.jsx
-â”‚   â”‚   â”œâ”€â”€ landing.css
-â”‚   â”‚   â””â”€â”€ styles.css
-â”‚   â”œâ”€â”€ package.json
-â”‚   â””â”€â”€ vite.config.js
-â”œâ”€â”€ models/
-â”‚   â”œâ”€â”€ category_text/
-â”‚   â”‚   â””â”€â”€ category_text_model.joblib
-â”‚   â””â”€â”€ priority_description/
-â”‚       â””â”€â”€ priority_description_model.joblib
-â”œâ”€â”€ category_text_predictor.py
-â”œâ”€â”€ priority_description_predictor.py
-â”œâ”€â”€ train_category_text_model.py
-â”œâ”€â”€ train_priority_description_model.py
-â”œâ”€â”€ supportflow_app.py
-â”œâ”€â”€ requirements.txt
-â”œâ”€â”€ vercel.json
-â””â”€â”€ README.md
+├── data/
+│   └── raw/                              # Source datasets
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── data/
+│   │   ├── services/
+│   │   │   └── api.js
+│   │   ├── App.jsx
+│   │   ├── LandingPage.jsx
+│   │   ├── landing.css
+│   │   └── styles.css
+│   ├── package.json
+│   └── vite.config.js
+├── models/
+│   ├── category_text/
+│   │   └── category_text_model.joblib
+│   └── priority_description/
+│       └── priority_description_model.joblib
+├── category_text_predictor.py
+├── priority_description_predictor.py
+├── train_category_text_model.py
+├── train_priority_description_model.py
+├── supportflow_app.py
+├── requirements.txt
+├── vercel.json
+└── README.md
 ```
 
 ## Technology stack
